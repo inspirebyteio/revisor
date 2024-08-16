@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Revisor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./images/logo-white.png" alt="" id="logo-image">
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="contact.html" class="nav-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!--
+    <section id="integrations">
+        <h1>Available Integrations :</h1>
+        
+        
+        <div id="integrations-container" class="grid-container"></div>
+    </section>
+    -->
+
+
+    <main>
+        <div class="integrations-container">            
+            <div class="services">
+                <h2 class="note">SERVICES INTEGRATION (optional) :<br><span class="change-font">** ONE TIME PAYMENT **</span></h2>
+                
+                <div id="legend">
+                    <svg width="25" height="20" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="20" height="15" stroke="#0056b3" stroke-width="2" fill="none" rx="2" ry="2" />
+                      </svg>
+                    <h3>&nbsp;: POPULAR</h3>
+                </div>
+                <select id="serviceSelect" class="service-select">
+                    <option value="0">Calling</option>
+                </select>
+                <div id="apiOptions" class="api-options"></div>
+            </div>
+            <div class="cart">
+                <h2>Core REI System : $199</h2>
+                <p id="no-service-selected-note">**NO SERVICES SELECTED YET**</p>
+                <ul id="cartList"></ul>
+                <div class="total">
+                    Total Price: <span id="totalPrice">$199</span>
+                </div>
+
+                <!--
+
+                <script src="https://www.paypal.com/sdk/js?client-id=BAA3PcCNviPXqVw6G588XTW14XEjmKnOcT9ch3tdPRhhnOgXPtE5uOQ3ZQRgMoOYJDjUWcr7981zHYNtfY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+                <div id="paypal-container-532DDN4FVLFCL"></div>
+                <script>
+                paypal.HostedButtons({
+                    hostedButtonId: "532DDN4FVLFCL",
+                }).render("#paypal-container-532DDN4FVLFCL")
+                </script>
+
+                -->
+                
+                <a href="#" class="btn-primary btn-purchase"><span class="cart-icon">&#x1F6D2;</span>Checkout</a>
+            </div>
+        </div>
+    </main>
+
+    <section id="money-back-guarantee">
+        <img class="money-back-img" src="./images/money-back.png" alt="Money Back Guarantee">
+        <div id="'money-back-content">
+            <h2>7 days No Questions Asked Money Back Guarantee</h2>
+            <p>We want you to be completely satisfied with our service. If for any reason you’re not happy, we offer a 100% money-back guarantee within 7 days of your payment. No questions asked! Just <a href="./contact.html">Contact Us</a>, and we'll be happy to help.</p>
+        </div>        
+    </section>
+
+    <section class="cta">
+        <h2>Ready to get started?</h2>
+        <a href="contact.html" class="btn-secondary">Contact Us</a>
+    </section>
+
+    <!-- FAQ Section -->
+<section id="faq" class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-button">What is Revisor?</button>
+                <div class="accordion-content">
+                    <p>Revisor is a comprehensive real estate advisor tool that helps manage property listings, track leads, and integrate various services like calling, SMS, email, and eSign.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">How does the pricing work?</button>
+                <div class="accordion-content">
+                    <p>Pricing is based on the services and APIs you select. Each service has its own set of APIs with associated charges. You can view and manage your selections in the integrations page.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">Can I integrate my own APIs?</button>
+                <div class="accordion-content">
+                    <p>Currently, we provide a set of predefined APIs. If you need a custom integration, please contact us, and we'll work on a solution tailored to your needs.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">What kind of support do you offer?</button>
+                <div class="accordion-content">
+                    <p>We offer support via email and phone. You can reach out to us with any queries or issues, and our team will assist you promptly.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">Is there a free trial available?</button>
+                <div class="accordion-content">
+                    <p>Yes, we offer a free trial period for new users. During this trial, you can explore the features and integrations available before making a commitment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+<footer>    
+    <div class="social-media">
+      <a href="https://www.linkedin.com/company/inspirebyte" target="_blank">
+        <img src="./images/icons/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="https://www.instagram.com/inspirebyte" target="_blank">
+        <img src="./images/icons/instagram.png" alt="Instagram">
+      </a>
+      <a href="https://www.inspirebyte.com" target="_blank">
+        <img src="./images/icons/inspirebyte.png" alt="Company Website">
+      </a>
+    </div>
+    <p>&copy; 2024 Revisor. A product of <a href="https://inspirebyte.io" target="_blank">Inspirebyte</a>. All rights reserved.</p>
+</footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

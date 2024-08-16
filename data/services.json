@@ -1,0 +1,151 @@
+{
+    "services": [
+        {
+            "name": "Calling",
+            "description": "Manage your calling and SMS needs with reliable integrations.",
+            "serviceIcon":"../images/icons/call.png",
+            "builtin":true,
+            "apis": [
+                {
+                    "name": "SmartCalls",
+                    "features": ["Call Forwarding", "Call Analytics"],
+                    "charge": "$15",
+                    "isPreferred": true
+                },
+                {
+                    "name": "Twilio",
+                    "features": ["SMS Messaging", "Voice API", "Video Calling"],
+                    "charge": "$20",
+                    "isPreferred": false
+                }
+            ]
+        },
+        {
+            "name": "SMS",
+            "description": "Manage your calling and SMS needs with reliable integrations.",
+            "serviceIcon":"../images/icons/sms.png",
+            "builtin":true,
+            "apis": [
+                {
+                    "name": "Smartphone",
+                    "features": ["Call Recording", "Voicemail", "SMS Notifications"],
+                    "charge": "$10",
+                    "isPreferred": false
+                },
+                {
+                    "name": "SmartCalls",
+                    "features": ["Call Forwarding", "Call Analytics"],
+                    "charge": "$15",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Twilio",
+                    "features": ["SMS Messaging", "Voice API", "Video Calling"],
+                    "charge": "$20",
+                    "isPreferred": true
+                }
+            ]
+        },
+        {
+            "name": "Email",
+            "description": "Integrate your email systems for seamless communication.",
+            "serviceIcon":"../images/icons/email.png",
+            "builtin":true,
+            "apis": [
+                {
+                    "name": "SendGrid",
+                    "features": ["Transactional Emails", "Email Marketing", "Analytics"],
+                    "charge": "$12",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Amazon SES",
+                    "features": ["Bulk Email Sending", "Email Analytics", "SMTP Support"],
+                    "charge": "$5",
+                    "isPreferred": true
+                }
+            ]
+        },
+        {
+            "name": "eSign",
+            "description": "Digitally sign documents and manage signatures.",
+            "serviceIcon":"../images/icons/esign.png",
+            "builtin":true,
+            "apis": [
+                {
+                    "name": "DocuSign",
+                    "features": ["Document Management", "Signature Requests", "Audit Trails"],
+                    "charge": "$25",
+                    "isPreferred": true
+                },
+                {
+                    "name": "Adobe Sign",
+                    "features": ["Digital Signatures", "Document Tracking", "Cloud Storage Integration"],
+                    "charge": "$30",
+                    "isPreferred": false
+                }
+            ]
+        },
+        {
+            "name": "CRM Integration",
+            "description": "Integrate with popular CRM systems to manage customer relationships.",
+            "serviceIcon":"../images/icons/crm.png",
+            "builtin":false,
+            "apis": [
+                {
+                    "name": "Salesforce",
+                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
+                    "charge": "$40",
+                    "isPreferred": true
+                },
+                {
+                    "name": "Zoho CRM",
+                    "features": ["Sales Automation", "Lead Management", "Analytics"],
+                    "charge": "$25",
+                    "isPreferred": false
+                }
+            ]
+        },
+        {
+            "name": "Whatever",
+            "description": "Integrate with popular CRM systems to manage customer relationships.",
+            "serviceIcon":"../images/icons/find.png",
+            "builtin":false,
+            "apis": [
+                {
+                    "name": "Salesforce",
+                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
+                    "charge": "$40",
+                    "isPreferred": true
+                }
+            ]
+        },
+        {
+            "name": "Whatever",
+            "builtin":false,
+            "description": "Integrate with popular CRM systems to manage customer relationships.",
+            "serviceIcon":"../images/icons/find.png",
+            "apis": [
+                {
+                    "name": "Salesforce",
+                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
+                    "charge": "$40",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Salesforce",
+                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
+                    "charge": "$40",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Salesforce",
+                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
+                    "charge": "$40",
+                    "isPreferred": true
+                }
+            ]
+        }
+
+    ]
+}

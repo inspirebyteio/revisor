@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Revisor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./images/logo-white.png" alt="" id="logo-image">
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <!--<li><a href="integrations.html">Integrations</a></li>-->
+                <li><a href="contact.html" class="nav-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, please fill out the form below, and we'll get back to you right away.</p>
+        <form action="https://getform.io/f/aa41bd2e-529b-4b9c-9d60-977403eb4295" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+            <label for="message">Query (optional):</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="4"></textarea>
+            
+            <!--
+            <label for="datetime">Preferred Date and Time:</label>
+            <input type="datetime-local" id="datetime" name="datetime">
+            -->
+
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+    </section>
+
+
+        <!-- Connect With Us Section -->
+        <section id="connect" class="about-section">
+            <h2>Connect with Us</h2>
+            <div class="connect-content">
+                <div class="social-icons">
+                    <a href="https://linkedin.com/inspirebyte" class="tooltip" data-tooltip="LinkedIn">
+                        <img src="./images/icons/linkedin_64.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://instagram.com/inspirebyte" class="tooltip" data-tooltip="Instagram">
+                        <img src="./images/icons/instagram_64.png" alt="Instagram">
+                    </a>
+                    <a href="mailto:info@revisor.in" class="tooltip" data-tooltip="Email">
+                        <img src="./images/icons/gmail_64.png" alt="Email">
+                    </a>
+                </div>
+                <div class="office-info">
+                    <p><strong>Office Address:</strong></p>
+                    <p>3rd Floor, Dev Bhoomi Tower, 86, Mussoorie Rd, <br>Opposite Hotel Jungle View Retreat, Malsi,<br>Dehradun, Uttarakhand, 248014</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3441.921784555973!2d78.0729895255667!3d30.381578824755614!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d7a1f0c7a92b%3A0x175dfe51e08f6936!2sInspireByte!5e0!3m2!1sen!2sin!4v1722489658708!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+        <!-- FAQ Section -->
+<section id="faq" class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-button">What is Revisor?</button>
+                <div class="accordion-content">
+                    <p>Revisor is a comprehensive real estate advisor tool that helps manage property listings, track leads, and integrate various services like calling, SMS, email, and eSign.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">How does the pricing work?</button>
+                <div class="accordion-content">
+                    <p>Pricing is based on the services and APIs you select. Each service has its own set of APIs with associated charges. You can view and manage your selections in the integrations page.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">Can I integrate my own APIs?</button>
+                <div class="accordion-content">
+                    <p>Currently, we provide a set of predefined APIs. If you need a custom integration, please contact us, and we'll work on a solution tailored to your needs.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">What kind of support do you offer?</button>
+                <div class="accordion-content">
+                    <p>We offer support via email and phone. You can reach out to us with any queries or issues, and our team will assist you promptly.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button">Is there a free trial available?</button>
+                <div class="accordion-content">
+                    <p>Yes, we offer a free trial period for new users. During this trial, you can explore the features and integrations available before making a commitment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer>    
+    <div class="social-media">
+      <a href="https://www.linkedin.com/company/inspirebyte" target="_blank">
+        <img src="./images/icons/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="https://www.instagram.com/inspirebyte" target="_blank">
+        <img src="./images/icons/instagram.png" alt="Instagram">
+      </a>
+      <a href="https://www.inspirebyte.com" target="_blank">
+        <img src="./images/icons/inspirebyte.png" alt="Company Website">
+      </a>
+    </div>
+    <p>&copy; 2024 Revisor. A product of <a href="https://inspirebyte.io" target="_blank">Inspirebyte</a>. All rights reserved.</p>
+</footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
