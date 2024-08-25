@@ -7,6 +7,7 @@ html{
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
+    width: 100 vw;
     padding: 0;
     box-sizing: border-box;
     color: #333333; /* Primary Text Color */
@@ -22,11 +23,9 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 15px;
 }
 
 nav .logo {
@@ -41,7 +40,8 @@ nav .logo {
 }
 
 #logo-image:hover{
-    transform: scale(1.1);
+    /*transform: scale(1.1);*/
+    cursor: pointer;
 }
 
 nav ul {
@@ -52,11 +52,11 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 20px;
+    margin-right: 10%;
 }
 
 nav ul li a {
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: #ffffff; /* Inverse Text Color */
     text-decoration: none;
 }
@@ -72,15 +72,14 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     background-color: #e1f5fe; /* Light background for hero section */
-    padding: 20px 5px;
+    padding: 5px 0px;
     text-align: center;
 }
 
 .heading {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #0056b3; /* Primary Color */
-    margin: 10px 0;
 }
 
 .hero p {
@@ -284,8 +283,6 @@ nav ul li a:hover {
 
 .money-back-img{
     margin: auto;
-    height: 100%;
-    width: 30%;
 }
 
 #money-back-guarantee h2 {
@@ -507,6 +504,16 @@ footer p a {
 /* Responsive Styles */
 @media (max-width: 768px) {
 
+    .social-icons {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .payment-note{
+        font-size: .7em;
+        line-height: 10px;
+    }
+
     .pricing-option{
         width: 70%;
     }
@@ -546,10 +553,16 @@ footer p a {
         flex-direction: column;
         align-items: center;
     }
+
 }
 
 @media (max-width: 480px) {
 
+    .social-icons {
+        display: flex;
+        flex-direction: row;
+    }
+    
     .pricing-option{
         width: 150%;
     }
@@ -653,11 +666,12 @@ footer p a {
     background-color: #003f7d; /* Darker shade of Primary Color */
 }
 
+
 /* Highlighted Contact link */
 .nav-contact {
     color: #ffffff; /* Inverse Text Color */
     border-bottom: 1px solid #ffffff; /* Inverse Text Color */
-    transition: all .3s
+    transition: all .3s;
 }
 /* Navigation Contact Hover */
 .nav-contact:hover {
@@ -866,7 +880,7 @@ footer p a {
 .payment-note{
     width: 100%;
     font-size: 1.2em;
-    line-height: 50%;
+    line-height: 100%;
     font-weight: bold;
     color: #0056b3;
     padding: 0;
