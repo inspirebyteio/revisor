@@ -22,20 +22,19 @@ header {
 }
 
 nav {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
 }
 
-nav .logo {
-    margin: 0;
+.logo {
+    text-align: center;
 }
 
 #logo-image{
-    height: 15%;
-    width: 20%;
-
+    height: 10%;
+    width: 10%;
     transition: all .3s;
 }
 
@@ -46,17 +45,13 @@ nav .logo {
 
 nav ul {
     display: flex;
+    flex-direction: row;
     list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-right: 10%;
+    justify-content: space-evenly;
 }
 
 nav ul li a {
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: #ffffff; /* Inverse Text Color */
     text-decoration: none;
 }
@@ -66,13 +61,64 @@ nav ul li a:hover {
 }
 
 /* Hero Section */
+
+#animate {
+    font-weight: bold;
+    background-color: #ddd;
+    padding: 4px;
+    border: 1px solid #0056b3;
+    animation: colorChange 3s infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #0056b3 50%, white 50%);
+    background-size: 200% 100%;
+}
+
+@keyframes colorChange {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+
+
+
+#animate-reverse {
+    font-weight: 250;
+    background-color: #0056b3;
+    padding: 4px;
+    animation: colorChangeReverse 3s infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to left, #0056b3 50%, white 50%);
+    background-size: 200% 100%;
+}
+
+@keyframes colorChangeReverse {
+    100% {
+        background-position: 100% 0;
+    }
+    0% {
+        background-position: 0 0;
+    }
+}
+
+
+
+
+
 .hero {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #e1f5fe; /* Light background for hero section */
-    padding: 5px 0px;
+    padding: 10px 0px;
     text-align: center;
 }
 
@@ -349,7 +395,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-rows: 1fr 3fr;
     align-items: center;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .feature-box{
@@ -519,19 +565,32 @@ footer p a {
     }
 
     nav{
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         text-align: center;
-        justify-content: space-between;
+        justify-content: space-around;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: space-evenly;
+    }
+
+    nav ul li a{
+        font-size: 1em;
     }
 
 
     .feature-section{
         margin: 1%;
+        padding: 1%
     }
     .feature-box{
         display: grid;
+        gap: 0;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 3fr;
         align-items: center;
@@ -543,12 +602,15 @@ footer p a {
 
     #usps {
         flex: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: auto;
+        gap: 0;
+        width: 100 vw;
         grid-template-rows: auto;
         align-items: center;
     }
 
-    .usp{        
+    .usp{  
+        margin: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -578,10 +640,12 @@ footer p a {
 
 
     .feature-section{
-        margin: 1%;
+        margin: 0;
+        padding: 0;
     }
     .feature-box{
         display: grid;
+        gap: 0;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 3fr;
         align-items: center;
@@ -597,12 +661,14 @@ footer p a {
     
     #usps {
         flex: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: auto;
         grid-template-rows: auto;
         align-items: center;
     }
 
-    .usp{        
+    .usp{    
+        margin: 0;
+        width: 100%;    
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -696,8 +762,9 @@ footer p a {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px;
     padding: 20px;
+    width: 40%;
     text-align: center;
-    width: 35%; /* Adjust as needed */
+   
     transition: transform 0.3s;
 }
 
