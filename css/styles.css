@@ -17,15 +17,23 @@ body {
 
 /* Navigation Styles */
 header {
+    width: 100vw;
     background-color: #0056b3; /* Primary Color */
     color: #ffffff; /* Inverse Text Color */
+
+    top: 0;
+    position: fixed;
+    z-index: 1;
+    overflow: visible;
+    box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.1); 
 }
 
 nav {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     align-items: center;
     justify-content: center;
+    padding: 5px;
 }
 
 .logo {
@@ -34,7 +42,7 @@ nav {
 
 #logo-image{
     height: 10%;
-    width: 10%;
+    width: 13%;
     transition: all .3s;
 }
 
@@ -51,18 +59,22 @@ nav ul {
 }
 
 nav ul li a {
-    font-size: 1.2em;
+    text-transform: uppercase;
+    font-size: 1.1em;
     color: #ffffff; /* Inverse Text Color */
     text-decoration: none;
+    transition: all .3s;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    border: .5px solid #ddd;
+    padding: 5%;
+    border-radius: 5px;
 }
 
 /* Hero Section */
 
-#animate {
+.animate {
     font-weight: bold;
     background-color: #ddd;
     padding: 4px;
@@ -87,7 +99,7 @@ nav ul li a:hover {
 
 
 
-#animate-reverse {
+.animate-reverse {
     font-weight: 250;
     background-color: #0056b3;
     padding: 4px;
@@ -110,7 +122,9 @@ nav ul li a:hover {
 
 
 
-
+#about-page, .features, .contact, .integrations-page{
+    margin-top: 6%;
+}
 
 .hero {
     display: flex;
@@ -120,6 +134,8 @@ nav ul li a:hover {
     background-color: #e1f5fe; /* Light background for hero section */
     padding: 10px 0px;
     text-align: center;
+    margin-bottom: 3%;
+    margin-top: 6%;
 }
 
 .heading {
@@ -132,6 +148,30 @@ nav ul li a:hover {
     font-size: 1.2rem;
     margin: 1px 0;
 }
+
+
+/*
+#endButton {
+    position: absolute;
+    display: none;
+    padding: 15px 25px;
+    background-color: #ddd;
+    color: #0056b3;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #0056b3;
+    box-shadow: 3px 3px 9px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+}
+
+#endButton.show {
+    display: block;
+    opacity: .6;
+}
+*/
+
 
 .btn-primary {
     display: inline-block;
@@ -153,6 +193,12 @@ nav ul li a:hover {
     height: 100%;
     margin-top: 20px;
 }
+
+
+.hero-buttons{
+    display: inline;
+}
+
 
 /* Features Section */
 .features {
@@ -566,12 +612,18 @@ footer p a {
 
     nav{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         align-items: center;
         text-align: center;
         justify-content: space-around;
     }
     
+    #logo-image{
+        height: 10%;
+        width: 25%;
+        transition: all .3s;
+    }
+
     nav ul {
         display: flex;
         flex-direction: row;
@@ -583,6 +635,10 @@ footer p a {
         font-size: 1em;
     }
 
+    #about-page, .features, .contact, .integrations-page, .hero{
+        margin-top: 10%;
+    }
+    
 
     .feature-section{
         margin: 1%;
@@ -628,16 +684,34 @@ footer p a {
     .pricing-option{
         width: 150%;
     }
+    
 
-    nav{
-        display: flex;
-        flex-direction: row;
+
+    nav {
+        display: grid;
+        grid-template-columns: 1fr;
         align-items: center;
-        text-align: center;
-        justify-content: space-between;
+        justify-content: center;
+        padding: 5px;
     }
 
+    nav ul{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 
+    #about-page, .features, .contact, .integrations-page, .hero{
+        margin-top: 30%;
+    }
+    
+    #logo-image{
+        height: 10%;
+        width: 25%;
+        transition: all .3s;
+    }
 
     .feature-section{
         margin: 0;
@@ -654,10 +728,7 @@ footer p a {
     .feature-item, .pricing-item {
         flex: 1 1 100%;
     }
-    nav {
-        display: flex;
-        flex-direction: column;
-    }
+
     
     #usps {
         flex: grid;

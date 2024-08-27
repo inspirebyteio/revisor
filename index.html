@@ -15,7 +15,7 @@
     <title>Revisor - Real Estate Advisor</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/scripts.js"></script>
+    
 </head>
 <body>
     <header>
@@ -28,28 +28,27 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="features.html">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="contact.html" class="nav-contact">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
     
     <section class="hero">
-        <h1 class="heading">Welcome to <span id="animate">Revisor</span></h1>
-        <p id="animate-reverse">Your Real Estate Advisor</p>
+        <h1 class="heading">Welcome to <span class="animate">Revisor</span></h1>
+        <p class="animate-reverse">Your Real Estate Advisor</p>
         <!-- <a href="features.html" class="btn-primary">Learn More</a> -->
-        <video controls autoplay muted loop>
+        <video id="myVideo" controls autoplay muted loop>
             <source src="./images/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <br>
-        <a href="contact.html" class="btn-primary">Get Started</a>
+        <div class="hero-buttons">
+          <a href="contact.html" id="endButton" class="btn-primary btn-purchase">Get Started</a>
+          <a href="features.html"  class="btn-primary">Learn More</a>
+        </div>
     </section>
 
-
-    </section>
     
-
-
     <!-- USPs Section -->
     <h1 class="heading">What sets up apart</h1>
     <section id="usps">        
@@ -213,6 +212,6 @@
     </div>
     <p>&copy; 2024 Revisor. A product of <a href="https://inspirebyte.io" target="_blank">Inspirebyte</a>. All rights reserved.</p>
 </footer>
-    
+<script src="js/scripts.js"></script>
 </body>
 </html>

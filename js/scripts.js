@@ -164,9 +164,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+/*
+const video = document.getElementById('myVideo');
+const endButton = document.getElementById('endButton');
 
+video.addEventListener('timeupdate', () => {
+    const timeRemaining = video.duration - video.currentTime;
 
-
+    // Show the button 5 seconds before the video ends
+    if (timeRemaining <= 7 && !endButton.classList.contains('show')) {
+        endButton.classList.add('show');
+        endButton.style.top = `${video.getBoundingClientRect().top + video.clientHeight / 3}px`;
+        endButton.style.left = `${video.getBoundingClientRect().left + video.clientWidth / 2 - endButton.clientWidth / 2}px`;
+    }
+});
+*/
 
 
 
