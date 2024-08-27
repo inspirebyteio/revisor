@@ -683,6 +683,16 @@ footer p a {
         align-items: center;
     }
 
+    .api-options {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .api-option{
+        width: 80% !important;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -754,13 +764,15 @@ footer p a {
     }
     
 
+    .api-options {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
 
-
-
-
-
-
-
+    .api-option{
+        width: 80% !important;
+    }
     
     #usps {
         flex: grid;
