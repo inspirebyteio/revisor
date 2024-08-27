@@ -132,7 +132,6 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     background-color: #e1f5fe; /* Light background for hero section */
-    padding: 10px 0px;
     text-align: center;
     margin-bottom: 3%;
     margin-top: 6%;
@@ -959,7 +958,7 @@ footer p a {
 }
 
 .slideshow-content .slide {
-    min-width: 33.33%;
+    min-width: 20%;
     box-sizing: border-box;
     padding: 10px;
     border: 1px solid #dddddd;
