@@ -677,10 +677,13 @@ footer p a {
 @media (max-width: 480px) {
 
     .social-icons {
-        display: flex;
-        flex-direction: row;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        
     }
-    
+
+
     .pricing-option{
         width: 150%;
     }
@@ -732,18 +735,31 @@ footer p a {
     
     #usps {
         flex: grid;
-        grid-template-columns: auto;
+        padding: 0;
+        gap:0;
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
         align-items: center;
     }
 
     .usp{    
         margin: 0;
-        width: 100%;    
+        width: 75% !important;;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
+
+    #money-back-guarantee{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+
+
+
+
 }
 
 /* Contact Section Styles */
@@ -833,7 +849,7 @@ footer p a {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px;
     padding: 20px;
-    width: 40%;
+    width: 35%;
     text-align: center;
    
     transition: transform 0.3s;
