@@ -3,7 +3,7 @@
         {
             "name": "Calling",
             "description": "Manage your calling and SMS needs with reliable integrations.",
-            "serviceIcon":"../images/icons/call.png",
+            "serviceIcon":"../images/icons/call.gif",
             "builtin":true,
             "apis": [
                 {
@@ -23,7 +23,7 @@
         {
             "name": "SMS",
             "description": "Manage your calling and SMS needs with reliable integrations.",
-            "serviceIcon":"../images/icons/sms.png",
+            "serviceIcon":"../images/icons/sms.gif",
             "builtin":true,
             "apis": [
                 {
@@ -49,7 +49,7 @@
         {
             "name": "Email",
             "description": "Integrate your email systems for seamless communication.",
-            "serviceIcon":"../images/icons/email.png",
+            "serviceIcon":"../images/icons/email.gif",
             "builtin":true,
             "apis": [
                 {
@@ -69,7 +69,7 @@
         {
             "name": "eSign",
             "description": "Digitally sign documents and manage signatures.",
-            "serviceIcon":"../images/icons/esign.png",
+            "serviceIcon":"../images/icons/esign.gif",
             "builtin":true,
             "apis": [
                 {
@@ -89,7 +89,7 @@
         {
             "name": "CRM Integration",
             "description": "Integrate with popular CRM systems to manage customer relationships.",
-            "serviceIcon":"../images/icons/crm.png",
+            "serviceIcon":"../images/icons/crm.gif",
             "builtin":false,
             "apis": [
                 {

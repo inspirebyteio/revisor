@@ -894,7 +894,7 @@ footer p a {
 }
 
 .usp {
-    background: #f9f9f9;
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px;
@@ -967,6 +967,10 @@ footer p a {
     transition: transform 0.5s ease-in-out;
 }
 
+.slide {
+    background-color: #fff;
+}
+
 .slideshow-content .slide {
     min-width: 20%;
     box-sizing: border-box;
@@ -999,6 +1003,7 @@ footer p a {
 .prev, .next {
     cursor: pointer;
     position: absolute;
+    overflow: visible;
     top: 50%;
     transform: translateY(-50%);
     padding: 20px;
