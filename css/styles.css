@@ -42,7 +42,7 @@ nav {
 
 #logo-image{
     height: 10%;
-    width: 15%;
+    width: 16%;
     transition: all .3s;
 }
 
@@ -56,11 +56,12 @@ nav ul {
     flex-direction: row;
     list-style: none;
     justify-content: space-evenly;
+    padding-right: 20%;
 }
 
 nav ul li a {
     text-transform: uppercase;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 200;
     /*
     padding: 10px;
