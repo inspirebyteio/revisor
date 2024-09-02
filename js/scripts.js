@@ -225,6 +225,24 @@ function displayPricingTile(data){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // FAQs
 
 document.addEventListener('DOMContentLoaded', () => {
