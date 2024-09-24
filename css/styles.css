@@ -522,7 +522,7 @@ section{
 }
 
 .feature-text ul li::before {
-    content: '⯈';
+    content: "\2bc8";
     color: #0056b3;
     margin-right: 10px;
     transition: all .5s;
