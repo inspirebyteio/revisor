@@ -1323,6 +1323,7 @@ footer p a {
 .accordion-content p {
     margin: 0;
     color: #666666;
+    text-align: left;
 }
 
 
