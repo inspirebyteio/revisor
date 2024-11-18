@@ -630,18 +630,36 @@ footer p a {
         width: 70%;
     }
 
+        
+    #logo-image{
+        height: 10%;
+        width: 25%;
+        transition: all .3s;
+    }
+
+
+    nav {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+    }
+
+    nav ul{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    /*
     nav{
         display: grid;
         grid-template-columns: 1fr 2fr;
         align-items: center;
         text-align: center;
         justify-content: space-around;
-    }
-    
-    #logo-image{
-        height: 10%;
-        width: 25%;
-        transition: all .3s;
     }
 
     nav ul {
@@ -655,10 +673,12 @@ footer p a {
         font-size: 1em;
     }
 
+    */
+
     #about-page, .features, .contact, .integrations-page, .hero{
-        margin-top: 10%;
+        margin-top: 30%;
     }
-    
+
 
     .feature-section{
         margin-top: 8%;
