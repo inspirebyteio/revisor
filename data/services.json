@@ -2,47 +2,103 @@
     "services": [
         {
             "name": "Calling",
-            "description": "Manage your calling and SMS needs with reliable integrations.",
+            "description": "Manage your calling needs with reliable integrations.",
             "serviceIcon":"../images/icons/call.gif",
             "builtin":true,
             "apis": [
                 {
-                    "name": "SmartCalls",
-                    "features": ["Call Forwarding", "Call Analytics"],
-                    "charge": "$15",
+                    "name": "Smartphone",
+                    "features": ["Call", "Call Logs", "Call Recording"],
+                    "charge": "$99",
                     "isPreferred": true
                 },
                 {
                     "name": "Twilio",
-                    "features": ["SMS Messaging", "Voice API", "Video Calling"],
-                    "charge": "$20",
+                    "features": ["Call", "Call Logs", "Call Recording"],
+                    "charge": "$149",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Xencall/ReadyMode",
+                    "features": ["Call", "Call Logs", "Call Recording"],
+                    "charge": "$149",
+                    "isPreferred": false
+                },
+                {
+                    "name": "CallTools",
+                    "features": ["Call", "Call Logs", "Call Recording"],
+                    "charge": "$149",
+                    "isPreferred": false
+                },
+                {
+                    "name": "MojoDialer",
+                    "features": ["Call", "Call Logs", "Call Recording"],
+                    "charge": "$99",
                     "isPreferred": false
                 }
             ]
         },
         {
             "name": "SMS",
-            "description": "Manage your calling and SMS needs with reliable integrations.",
+            "description": "Manage your SMS needs with reliable integrations.",
             "serviceIcon":"../images/icons/sms.gif",
             "builtin":true,
             "apis": [
                 {
                     "name": "Smartphone",
-                    "features": ["Call Recording", "Voicemail", "SMS Notifications"],
-                    "charge": "$10",
-                    "isPreferred": false
-                },
-                {
-                    "name": "SmartCalls",
-                    "features": ["Call Forwarding", "Call Analytics"],
-                    "charge": "$15",
-                    "isPreferred": false
+                    "features": ["SMS", "Communication Log"],
+                    "charge": "$79",
+                    "isPreferred": true
                 },
                 {
                     "name": "Twilio",
-                    "features": ["SMS Messaging", "Voice API", "Video Calling"],
-                    "charge": "$20",
+                    "features": ["SMS", "Communication Log"],
+                    "charge": "$99",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Xencall/ReadyMode",
+                    "features": ["SMS", "Communication Log"],
+                    "charge": "$99",
+                    "isPreferred": false
+                },
+                {
+                    "name": "CallTools",
+                    "features": ["SMS", "Communication Log"],
+                    "charge": "$99",
+                    "isPreferred": false
+                },
+                {
+                    "name": "MojoDialer",
+                    "features": ["SMS", "Communication Log"],
+                    "charge": "$77",
+                    "isPreferred": false
+                }
+            ]
+        },
+        {
+            "name": "Calling & SMS",
+            "description": "Manage your calling and SMS needs with reliable integrations.",
+            "serviceIcon":"../images/icons/call.gif",
+            "builtin":true,
+            "apis": [
+                {
+                    "name": "Twilio",
+                    "features": ["Call", "SMS", "Voicemail"],
+                    "charge": "$199",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Smartphone",
+                    "features": ["Call", "SMS", "Voicemail"],
+                    "charge": "$149",
                     "isPreferred": true
+                },
+                {
+                    "name": "Xencall/ReadyMode",
+                    "features": ["Call", "SMS", "Voicemail"],
+                    "charge": "$199",
+                    "isPreferred": false
                 }
             ]
         },
@@ -53,16 +109,34 @@
             "builtin":true,
             "apis": [
                 {
-                    "name": "SendGrid",
-                    "features": ["Transactional Emails", "Email Marketing", "Analytics"],
-                    "charge": "$12",
+                    "name": "MailChimp",
+                    "features": [" Email Template", "Email Marketing", "Bulk Email"],
+                    "charge": "$99",
+                    "isPreferred": true
+                },
+                {
+                    "name": "PrintGinie",
+                    "features": [" Email Template", "Email Marketing", "Bulk Email"],
+                    "charge": "$149",
                     "isPreferred": false
                 },
                 {
-                    "name": "Amazon SES",
-                    "features": ["Bulk Email Sending", "Email Analytics", "SMTP Support"],
-                    "charge": "$5",
-                    "isPreferred": true
+                    "name": "Send In Blue",
+                    "features": [" Email Template", "Email Marketing", "Bulk Email"],
+                    "charge": "$149",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Click2mail",
+                    "features": [" Email Template", "Email Marketing", "Bulk Email"],
+                    "charge": "$199",
+                    "isPreferred": false
+                },
+                {
+                    "name": "Lob",
+                    "features": [" Email Template", "Email Marketing", "Bulk Email"],
+                    "charge": "$199",
+                    "isPreferred": false
                 }
             ]
         },
@@ -74,14 +148,32 @@
             "apis": [
                 {
                     "name": "DocuSign",
-                    "features": ["Document Management", "Signature Requests", "Audit Trails"],
-                    "charge": "$25",
+                    "features": ["Send/Receive Signed Doc"],
+                    "charge": "$349",
                     "isPreferred": true
                 },
                 {
-                    "name": "Adobe Sign",
-                    "features": ["Digital Signatures", "Document Tracking", "Cloud Storage Integration"],
-                    "charge": "$30",
+                    "name": "RightSignature",
+                    "features": ["Send/Receive Signed Doc"],
+                    "charge": "$199",
+                    "isPreferred": false
+                },
+                {
+                    "name": "HelloSign",
+                    "features": ["Send/Receive Signed Doc"],
+                    "charge": "$299",
+                    "isPreferred": false
+                },
+                {
+                    "name": "PandaDoc",
+                    "features": ["Send/Receive Signed Doc"],
+                    "charge": "$199",
+                    "isPreferred": false
+                },
+                {
+                    "name": "SignNow",
+                    "features": ["Send/Receive Signed Doc"],
+                    "charge": "$249",
                     "isPreferred": false
                 }
             ]
@@ -107,45 +199,24 @@
             ]
         },
         {
-            "name": "Whatever",
-            "description": "Integrate with popular CRM systems to manage customer relationships.",
-            "serviceIcon":"../images/icons/find.png",
-            "builtin":false,
+            "name": "AI Services",
+            "description": "Conversational AI assistant integrations for businesses to automate interactions and enhance customer experience.",
+            "serviceIcon": "../images/icons/ai.gif",
+            "builtin": true,
             "apis": [
                 {
-                    "name": "Salesforce",
-                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
-                    "charge": "$40",
-                    "isPreferred": true
-                }
-            ]
-        },
-        {
-            "name": "Whatever",
-            "builtin":false,
-            "description": "Integrate with popular CRM systems to manage customer relationships.",
-            "serviceIcon":"../images/icons/find.png",
-            "apis": [
-                {
-                    "name": "Salesforce",
-                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
-                    "charge": "$40",
+                    "name": "Google Gemini",
+                    "features": ["Real-time Analytics", "Automated Customer Support"],
+                    "charge": "$199",
                     "isPreferred": false
                 },
                 {
-                    "name": "Salesforce",
-                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
-                    "charge": "$40",
-                    "isPreferred": false
-                },
-                {
-                    "name": "Salesforce",
-                    "features": ["Lead Management", "Opportunity Tracking", "Custom Reports"],
-                    "charge": "$40",
+                    "name": "OpenAI ChatGPT",
+                    "features": ["Text Generation", "Knowledge Base Integration"],
+                    "charge": "$199",
                     "isPreferred": true
                 }
             ]
         }
-
     ]
 }
