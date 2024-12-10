@@ -143,24 +143,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 createOrder: function(data, actions) {
                     return actions.order.create({
                         purchase_units: [{
-                            amount: {
-                                currency_code: "USD",
-                                value: total.toFixed(2) // Use dynamic total amount
-                            }
-                        }]
+                            amount: { currency_code: "USD", value: total.toFixed(2) }
+                        }],
+                        application_context: {
+                            return_url: 'https://revisor.in/confirmation.html', // Replace with your return URL
+                            cancel_url: 'https://revisor.in/cancel.html' // Optional cancel URL
+                        }
                     });
                 },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Transaction completed by ' + details.payer.name.given_name);
-                        selectedServices = []; // Clear cart on success
-                        updateCart();
-                    });
-                },
-                onError: function(err) {
-                    console.error(err);
-                    alert('An error occurred during the transaction.');
-                }
+                
+               onApprove: function(data, actions) {
+                   return actions.order.capture().then(function(details) {
+                       // Store payment details in local storage
+                       localStorage.setItem('transactionId', details.id);
+                       localStorage.setItem('payerName', `${details.payer.name.given_name} ${details.payer.name.surname}`);
+                       localStorage.setItem('amount', total.toFixed(2));
+                       localStorage.setItem('servicesPurchased', JSON.stringify(selectedServices));
+            
+                       // Redirect to confirmation page
+                       window.location.href = 'confirmation.html';
+                   });
+               },
             }).render('#paypal-button-container'); // Render the button in the specified container
             
             paypalButtonsRendered = true; // Set flag to true after rendering
