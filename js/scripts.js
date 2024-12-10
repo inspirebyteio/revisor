@@ -29,9 +29,6 @@ function showPremium() {
 
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const serviceSelect = document.getElementById('serviceSelect');
     const apiOptions = document.getElementById('apiOptions');
@@ -40,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedServices = [];
     let total = 0;
+    let paypalButtonsRendered = false; // Track if PayPal buttons are rendered
 
     // Fetch data from services.json
     fetch('data/services.json')
@@ -53,12 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate service select dropdown
     function populateServiceSelect(services) {
         services.forEach((service, index) => {
-            if(index>0){
-            const option = document.createElement('option');
-            option.value = index;
-            option.textContent = service.name;
-            serviceSelect.appendChild(option);
-        }
+            if (index > 0) {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = service.name;
+                serviceSelect.appendChild(option);
+            }
         });
     }
 
@@ -78,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             apiTile.querySelector('.select-btn').addEventListener('click', () => {
-                const remove_no_service_selected_note = document.getElementById('no-service-selected-note');
-                remove_no_service_selected_note.style.display="none";
                 addToCart(api, service.name);
             });
 
@@ -89,14 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add selected API to the cart
     function addToCart(api, serviceName) {
-        // Remove existing entry if already selected
         const existingItemIndex = selectedServices.findIndex(item => item.service === serviceName);
         if (existingItemIndex !== -1) {
             selectedServices.splice(existingItemIndex, 1);
-            updateCart();
         }
 
-        // Add new entry
         selectedServices.push({
             service: serviceName,
             api: api.name,
@@ -109,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update cart display and total price
     function updateCart() {
         cartList.innerHTML = '';
-        total = 199;
+        total = 0;
 
         selectedServices.forEach(item => {
             const listItem = document.createElement('li');
@@ -128,18 +121,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         totalPrice.textContent = `$${total.toFixed(2)}`;
+        
+        // Render or update PayPal button
+        if (selectedServices.length > 0) {
+            renderPayPalButton();
+        } else {
+            document.getElementById('paypal-button-container').innerHTML = ''; // Clear button if no items
+        }
     }
 
     // Remove API from cart
     function removeFromCart(serviceName) {
         selectedServices = selectedServices.filter(item => item.service !== serviceName);
         updateCart();
+    }
 
-        if (selectedServices.length === 0) {
-            const noServiceSelectedNote = document.getElementById('no-service-selected-note');
-            noServiceSelectedNote.style.display = "block"; 
+    // Render PayPal button
+    function renderPayPalButton() {
+        if (!paypalButtonsRendered) { // Check if buttons are already rendered
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                currency_code: "USD",
+                                value: total.toFixed(2) // Use dynamic total amount
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Transaction completed by ' + details.payer.name.given_name);
+                        selectedServices = []; // Clear cart on success
+                        updateCart();
+                    });
+                },
+                onError: function(err) {
+                    console.error(err);
+                    alert('An error occurred during the transaction.');
+                }
+            }).render('#paypal-button-container'); // Render the button in the specified container
+            
+            paypalButtonsRendered = true; // Set flag to true after rendering
+        } else { 
+            // If already rendered, just update the order details by calling createOrder again
+            paypal.Buttons().update(); // This will refresh the order details based on current total.
         }
-
     }
 
     // Handle service selection change
@@ -153,10 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error loading services data:', error));
     });
 });
-
-
-
-
 
 
 
