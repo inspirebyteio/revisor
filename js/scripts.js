@@ -151,19 +151,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
                 },
-                
-               onApprove: function(data, actions) {
-                   return actions.order.capture().then(function(details) {
-                       // Store payment details in local storage
-                       localStorage.setItem('transactionId', details.id);
-                       localStorage.setItem('payerName', `${details.payer.name.given_name} ${details.payer.name.surname}`);
-                       localStorage.setItem('amount', total.toFixed(2));
-                       localStorage.setItem('servicesPurchased', JSON.stringify(selectedServices));
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        // Store payment details in local storage
+                        localStorage.setItem('transactionId', details.id);
+                        localStorage.setItem('payerName', `${details.payer.name.given_name} ${details.payer.name.surname}`);
+                        localStorage.setItem('amount', total.toFixed(2));
+                        localStorage.setItem('servicesPurchased', JSON.stringify(selectedServices));
             
-                       // Redirect to confirmation page
-                       window.location.href = 'confirmation.html';
-                   });
-               },
+                        // Redirect to confirmation page
+                        window.location.href = 'confirmation.html';
+                    }).catch(function(error) {
+                        // Handle errors during capture
+                        console.error('Payment capture error:', error);
+                        alert('There was an issue completing your payment. Please try again.');
+                        // Optionally redirect to a different page or show a retry option
+                    });
+                },
+                onError: function(err) {
+                    // Handle errors during the order creation or approval process
+                    console.error('PayPal Button Error:', err);
+                    alert('An error occurred while processing your payment. Please check your details and try again.');
+                    // Redirect to confirmation page
+                    window.location.href = 'cancel.html';
+                    // Optionally redirect to a different page or show a retry option
+                }
             }).render('#paypal-button-container'); // Render the button in the specified container
             
             paypalButtonsRendered = true; // Set flag to true after rendering
