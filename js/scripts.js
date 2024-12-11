@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalPrice = document.getElementById('totalPrice');
 
     let selectedServices = [];
-    let total = 0;
+    let total = 199;
     let paypalButtonsRendered = false; // Track if PayPal buttons are rendered
 
     // Fetch data from services.json
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update cart display and total price
     function updateCart() {
         cartList.innerHTML = '';
-        total = 0;
+        total = 199;
 
         selectedServices.forEach(item => {
             const listItem = document.createElement('li');
@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
                         // Store payment details in local storage
+                        localStorage.setItem('basePrice', 199);
                         localStorage.setItem('transactionId', details.id);
                         localStorage.setItem('payerName', `${details.payer.name.given_name} ${details.payer.name.surname}`);
                         localStorage.setItem('amount', total.toFixed(2));
