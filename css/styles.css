@@ -535,8 +535,8 @@ section{
 
 .feature-text ul li {
     margin-bottom: 1.2%;
-    font-size: 1.2em;
-    padding: 1.5%;
+    font-size: 1em;
+    padding: 1%;
     padding-left: 2%;
     transition: all .3s ease;
     
