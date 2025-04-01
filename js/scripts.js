@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add selected API to the cart
     function addToCart(api, serviceName) {
         const existingItemIndex = selectedServices.findIndex(item => item.service === serviceName);
+        document.getElementById("no-service-selected-note").style.visibility = "hidden";
         if (existingItemIndex !== -1) {
             selectedServices.splice(existingItemIndex, 1);
         }
@@ -124,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderPayPalButton();
         } else {
             document.getElementById('paypal-button-container').innerHTML = ''; // Clear button if no items
+            document.getElementById("no-service-selected-note").style.visibility = "visible";
         }
     }
 
@@ -134,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCart();
     }
 
-    
+
     // Render PayPal button
     function renderPayPalButton() {
         if (!paypalButtonsRendered) { // Check if buttons are already rendered
