@@ -7,7 +7,7 @@
             "builtin":true,
             "apis": [
                 {
-                    "name": "Smartphone",
+                    "name": "smrtPhone",
                     "features": ["Call", "Call Logs", "Call Recording"],
                     "charge": "$99",
                     "isPreferred": true
@@ -45,7 +45,7 @@
             "builtin":true,
             "apis": [
                 {
-                    "name": "Smartphone",
+                    "name": "smrtPhone",
                     "features": ["SMS", "Communication Log"],
                     "charge": "$79",
                     "isPreferred": true
@@ -89,7 +89,7 @@
                     "isPreferred": false
                 },
                 {
-                    "name": "Smartphone",
+                    "name": "smrtPhone",
                     "features": ["Call", "SMS", "Voicemail"],
                     "charge": "$149",
                     "isPreferred": true
