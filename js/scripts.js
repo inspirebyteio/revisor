@@ -22,13 +22,6 @@ function showPremium() {
 
 
 
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const serviceSelect = document.getElementById('serviceSelect');
     const apiOptions = document.getElementById('apiOptions');
@@ -60,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
     // Display API options based on selected service
     function displayApiOptions(service) {
         apiOptions.innerHTML = '';
@@ -83,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
     // Add selected API to the cart
     function addToCart(api, serviceName) {
         const existingItemIndex = selectedServices.findIndex(item => item.service === serviceName);
@@ -98,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateCart();
     }
+
 
     // Update cart display and total price
     function updateCart() {
@@ -122,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         totalPrice.textContent = `$${total.toFixed(2)}`;
         
+
         // Render or update PayPal button
         if (selectedServices.length > 0) {
             renderPayPalButton();
@@ -130,12 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
     // Remove API from cart
     function removeFromCart(serviceName) {
         selectedServices = selectedServices.filter(item => item.service !== serviceName);
         updateCart();
     }
 
+    
     // Render PayPal button
     function renderPayPalButton() {
         if (!paypalButtonsRendered) { // Check if buttons are already rendered
@@ -197,87 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error loading services data:', error));
     });
 });
-
-
-
-
-
-
-
-/*
-const video = document.getElementById('myVideo');
-const endButton = document.getElementById('endButton');
-
-video.addEventListener('timeupdate', () => {
-    const timeRemaining = video.duration - video.currentTime;
-
-    // Show the button 5 seconds before the video ends
-    if (timeRemaining <= 7 && !endButton.classList.contains('show')) {
-        endButton.classList.add('show');
-        endButton.style.top = `${video.getBoundingClientRect().top + video.clientHeight / 3}px`;
-        endButton.style.left = `${video.getBoundingClientRect().left + video.clientWidth / 2 - endButton.clientWidth / 2}px`;
-    }
-});
-*/
-
-
-
-
-
-
-
-
-/*
-// Display Builtin Service in Pricing serction using services.json
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('../data/services.json')
-        .then(response => response.json())
-        .then(data => displayPricingTile(data))
-        .catch(error => console.error('Error fetching JSON:', error));
-});
-
-function displayPricingTile(data){
-    const container = document.getElementById("builtin-services");
-    for (let i = 0; i < 4; i++) {
-        const serviceName = data.services[i].name;
-        const serviceApi = data.services[i].apis.filter(api => api.isPreferred);
-        const serviceApiName = serviceApi[0].name;
-        const serviceCharge = serviceApi[0].charge;
-        
-        const service_line = document.createElement('p');
-        service_line.textContent = serviceName+' : '+serviceApiName+', '+serviceCharge;
-
-        container.appendChild(service_line);
-        
-}
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -404,22 +322,3 @@ document.addEventListener('DOMContentLoaded', function() {
       .catch(error => console.error('Error fetching services:', error));
   });
   
-
-
-
-
-//CHANGE LOGO URL
-/*
-  document.addEventListener('DOMContentLoaded', function() {
-    const teamImgContainer = document.querySelector('.logo');
-    const teamImage = document.getElementById('logo-image');
-
-    teamImgContainer.addEventListener('mouseover', function() {
-        teamImage.src = '../images/logo-orange.png'; // Replace with the path to your hover image
-    });
-
-    teamImgContainer.addEventListener('mouseout', function() {
-        teamImage.src = '../images/logo-white.png'; // Replace with the path to your original image
-    });
-});
-*/
