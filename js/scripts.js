@@ -99,27 +99,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update cart display and total price
     function updateCart() {
         cartList.innerHTML = '';
-        total = 199;
-
+        let basePrice = 199;
+        let subtotal = basePrice; // Total before tax
+    
+        // Calculate GST (18% of subtotal)
+        let gst = subtotal * 0.18;
+        let totalWithGST = subtotal + gst;
+    
         selectedServices.forEach(item => {
             const listItem = document.createElement('li');
-
+    
             listItem.innerHTML = `
                 ${item.service}: ${item.api} - ${item.charge}
                 <button class="remove-btn">×</button>
             `;
-
+    
             listItem.querySelector('.remove-btn').addEventListener('click', () => {
                 removeFromCart(item.service);
             });
-
+    
             cartList.appendChild(listItem);
-            total += parseFloat(item.charge.replace('$', ''));
+            subtotal += parseFloat(item.charge.replace('$', ''));
         });
-
-        totalPrice.textContent = `$${total.toFixed(2)}`;
-        
-
+    
+        // Recalculate GST after adding services
+        gst = subtotal * 0.18;
+        totalWithGST = subtotal + gst;
+    
+        // Update total price display
+        totalPrice.innerHTML = `
+            <strong>Total: $${totalWithGST.toFixed(2)}</strong> 
+            <br>
+            <small>(Includes 18% GST: $${gst.toFixed(2)})</small>
+        `;
+    
         // Render or update PayPal button
         if (selectedServices.length > 0) {
             renderPayPalButton();
@@ -128,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("no-service-selected-note").style.visibility = "visible";
         }
     }
+        
 
 
     // Remove API from cart
