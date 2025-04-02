@@ -96,142 +96,127 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
-// Update cart display and total price
-function updateCart() {
-    cartList.innerHTML = '';
-    let basePrice = 199;
-    let subtotal = basePrice; // Total before tax
-
-    selectedServices.forEach(item => {
-        const listItem = document.createElement('li');
-
-        listItem.innerHTML = `
-            ${item.service}: ${item.api} - ${item.charge}
-            <button class="remove-btn">×</button>
-        `;
-
-        listItem.querySelector('.remove-btn').addEventListener('click', () => {
-            removeFromCart(item.service);
+    // Update cart display and total price
+    function updateCart() {
+        cartList.innerHTML = '';
+        let basePrice = 199;
+        let subtotal = basePrice; // Total before tax
+    
+        selectedServices.forEach(item => {
+            const listItem = document.createElement('li');
+    
+            listItem.innerHTML = `
+                ${item.service}: ${item.api} - ${item.charge}
+                <button class="remove-btn">×</button>
+            `;
+    
+            listItem.querySelector('.remove-btn').addEventListener('click', () => {
+                removeFromCart(item.service);
+            });
+    
+            cartList.appendChild(listItem);
+            subtotal += parseFloat(item.charge.replace('$', ''));
         });
-
-        cartList.appendChild(listItem);
-        subtotal += parseFloat(item.charge.replace('$', ''));
-    });
-
-    // Calculate GST (18% of subtotal)
-    let gst = subtotal * 0.18;
-    let totalWithGST = subtotal + gst;
-
-    // Update total price display (Total including services first, GST next, then final total)
-    totalPrice.innerHTML = `
-        <small>Subtotal (with services): $${subtotal.toFixed(2)}</small>
-        <br>
-        <small>GST (18%): $${gst.toFixed(2)}</small>
-        <hr>
-        <strong>Final Total: $${totalWithGST.toFixed(2)}</strong>
-    `;
-
-    // Set the global total value to be passed to PayPal
-    total = totalWithGST;
-
-    // Render or update PayPal button
-    if (selectedServices.length > 0) {
-        renderPayPalButton();
-    } else {
-        document.getElementById('paypal-button-container').innerHTML = ''; // Clear button if no items
-        document.getElementById("no-service-selected-note").style.visibility = "visible";
+    
+        // Calculate GST (18% of subtotal)
+        let gst = subtotal * 0.18;
+        let totalWithGST = subtotal + gst;
+    
+        // Update total price display (Total including services first, GST next, then final total)
+        totalPrice.innerHTML = `
+            <small>Subtotal (with services): $${subtotal.toFixed(2)}</small>
+            <br>
+            <small>GST (18%): $${gst.toFixed(2)}</small>
+            <hr>
+            <strong>Final Total: $${totalWithGST.toFixed(2)}</strong>
+        `;
+    
+        // Handle PayPal button rendering
+        const paypalContainer = document.getElementById('paypal-button-container');
+    
+        if (selectedServices.length > 0) {
+            paypalContainer.innerHTML = ''; // Clear old PayPal buttons
+            paypalButtonsRendered = false;  // Reset the flag
+            renderPayPalButton();           // Re-render PayPal buttons
+            document.getElementById("no-service-selected-note").style.visibility = "hidden";
+        } else {
+            paypalContainer.innerHTML = ''; // Clear button if no items
+            document.getElementById("no-service-selected-note").style.visibility = "visible";
+            paypalButtonsRendered = false;  // Ensure flag is reset for re-render
+        }
     }
-}
+             
 
-// Remove API from cart
-function removeFromCart(serviceName) {
-    selectedServices = selectedServices.filter(item => item.service !== serviceName);
-    updateCart();
-}
 
-// Render PayPal button
-function renderPayPalButton() {
-    if (!paypalButtonsRendered) { // Check if buttons are already rendered
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                // ✅ Send data to Podio webhook on button click
-                fetch("https://workflow-automation.podio.com/catch/81me67tl333c8q7", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        event: "paypal_clicked",
-                        user_id: "12345", // Replace with actual user ID
-                        selected_services: selectedServices,
-                        base_price: 199,
-                        timestamp: new Date().toISOString()
-                    })
-                });
+    // Remove API from cart
+    function removeFromCart(serviceName) {
+        selectedServices = selectedServices.filter(item => item.service !== serviceName);
+        updateCart();
+    }
 
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: { currency_code: "USD", value: total.toFixed(2) }
-                    }],
-                    application_context: {
-                        return_url: 'https://revisor.in/confirmation.html',
-                        cancel_url: 'https://revisor.in/cancel.html'
-                    }
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    let basePrice = 199;
-                    let subtotal = basePrice;
 
-                    selectedServices.forEach(item => {
-                        subtotal += parseFloat(item.charge.replace('$', ''));
+    // Render PayPal button
+    function renderPayPalButton() {
+        if (!paypalButtonsRendered) { // Check if buttons are already rendered
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: { currency_code: "USD", value: total.toFixed(2) }
+                        }],
+                        application_context: {
+                            return_url: 'https://revisor.in/confirmation.html', // Replace with your return URL
+                            cancel_url: 'https://revisor.in/cancel.html' // Optional cancel URL
+                        }
                     });
-
-                    let gst = subtotal * 0.18;
-                    let totalWithGST = subtotal + gst;
-
-                    localStorage.setItem('basePrice', basePrice);
-                    localStorage.setItem('gstAmount', gst.toFixed(2));
-                    localStorage.setItem('totalWithGST', totalWithGST.toFixed(2));
-                    localStorage.setItem('transactionId', details.id);
-                    localStorage.setItem('payerName', `${details.payer.name.given_name} ${details.payer.name.surname}`);
-                    localStorage.setItem('amount', totalWithGST.toFixed(2));
-                    localStorage.setItem('servicesPurchased', JSON.stringify(selectedServices));
-
-                    // ✅ Send payment success data to Podio
-                    fetch("https://podio.com/api/webhooks/{app_id}/trigger", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            event: "paypal_payment_success",
-                            transaction_id: details.id,
-                            payer_name: `${details.payer.name.given_name} ${details.payer.name.surname}`,
-                            amount: totalWithGST.toFixed(2),
-                            selected_services: selectedServices,
-                            timestamp: new Date().toISOString()
-                        })
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        // Calculate GST (18%)
+                        let basePrice = 199;
+                        let subtotal = basePrice; // Starting with the base price
+                    
+                        selectedServices.forEach(item => {
+                            subtotal += parseFloat(item.charge.replace('$', ''));
+                        });
+                    
+                        let gst = subtotal * 0.18;
+                        let totalWithGST = subtotal + gst;
+                    
+                        // Store payment details in local storage
+                        localStorage.setItem('basePrice', basePrice); // Base price only (199)
+                        localStorage.setItem('gstAmount', gst.toFixed(2)); // 18% GST
+                        localStorage.setItem('totalWithGST', totalWithGST.toFixed(2)); // Final total after adding GST
+                        localStorage.setItem('transactionId', details.id);
+                        localStorage.setItem('payerName', `${details.payer.name.given_name} ${details.payer.name.surname}`);
+                        localStorage.setItem('amount', totalWithGST.toFixed(2)); // The total amount the user paid (including GST)
+                        localStorage.setItem('servicesPurchased', JSON.stringify(selectedServices));
+            
+                        // Redirect to confirmation page
+                        window.location.href = 'confirmation.html';
+                    }).catch(function(error) {
+                        // Handle errors during capture
+                        console.error('Payment capture error:', error);
+                        alert('There was an issue completing your payment. Please try again.');
+                        // Optionally redirect to a different page or show a retry option
                     });
-
+                },
+                onError: function(err) {
+                    // Handle errors during the order creation or approval process
+                    console.error('PayPal Button Error:', err);
+                    alert('An error occurred while processing your payment. Please check your details and try again.');
                     // Redirect to confirmation page
-                    window.location.href = 'confirmation.html';
-                }).catch(function(error) {
-                    console.error('Payment capture error:', error);
-                    alert('There was an issue completing your payment. Please try again.');
-                });
-            },
-            onError: function(err) {
-                console.error('PayPal Button Error:', err);
-                alert('An error occurred while processing your payment. Please try again.');
-                window.location.href = 'cancel.html';
-            }
-        }).render('#paypal-button-container');
-
-        paypalButtonsRendered = true;
-    } else { 
-        paypal.Buttons().update(); 
+                    window.location.href = 'cancel.html';
+                    // Optionally redirect to a different page or show a retry option
+                }
+            }).render('#paypal-button-container'); // Render the button in the specified container
+            
+            paypalButtonsRendered = true; // Set flag to true after rendering
+        } else { 
+            // If already rendered, just update the order details by calling createOrder again
+            paypal.Buttons().update(); // This will refresh the order details based on current total.
+        }
     }
-}
-
 
     // Handle service selection change
     serviceSelect.addEventListener('change', (event) => {
@@ -244,6 +229,8 @@ function renderPayPalButton() {
             .catch(error => console.error('Error loading services data:', error));
     });
 });
+
+
 
 
 
