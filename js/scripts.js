@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderPayPalButton() {
         if (!paypalButtonsRendered) { // Check if buttons are already rendered
             paypal.Buttons({
-                createOrder: function(data, actions) {
+                createOrder: function(data, actions) {                
+                
                     return actions.order.create({
                         purchase_units: [{
                             amount: { currency_code: "USD", value: total.toFixed(2) }
@@ -169,6 +170,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         localStorage.setItem('amount', totalWithGST.toFixed(2)); // The total amount the user paid (including GST)
                         localStorage.setItem('servicesPurchased', JSON.stringify(selectedServices));
             
+
+
+                        // Send payment details to Podio
+                    const paymentData = {
+                        name: `${details.payer.name.given_name} ${details.payer.name.surname}`,
+                        email: details.payer.email_address || "N/A",
+                        amount: totalWithGST.toFixed(2),
+                        transactionId: details.id,
+                        services: JSON.stringify(selectedServices)
+                    };
+                    //sendToPodio(paymentData);
+
+
+
                         // Redirect to confirmation page
                         window.location.href = 'confirmation.html';
                     }).catch(function(error) {
@@ -182,6 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Handle errors during the order creation or approval process
                     console.error('PayPal Button Error:', err);
                     alert('An error occurred while processing your payment. Please check your details and try again.');
+                    
+                    // Notify Podio about payment failure
+                    //sendToPodio({ status: 'failed', error: err.toString() });
+                    
                     // Redirect to confirmation page
                     window.location.href = 'cancel.html';
                     // Optionally redirect to a different page or show a retry option
@@ -334,3 +353,25 @@ document.addEventListener('DOMContentLoaded', function() {
       .catch(error => console.error('Error fetching services:', error));
   });
   
+
+
+
+
+
+
+
+
+
+
+
+  
+  // Function to send data to Podio Webhook
+function sendToPodio(data) {
+    const queryParams = new URLSearchParams(data).toString();
+    const podioWebhookUrl = `https://workflow-automation.podio.com/catch/81me67tl333c8q7?${queryParams}`;
+
+    fetch(podioWebhookUrl, {
+        method: 'GET', // Since no-cors is enforced, only GET is possible
+        mode: 'no-cors'
+    }).catch(error => console.error('Podio Webhook Error:', error));
+}
