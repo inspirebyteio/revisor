@@ -1,26 +1,3 @@
-/*
-// Pricing Toggle Option
-function showBase() {
-    document.getElementById('pricing-name').innerText = 'Base Plan';
-    document.getElementById('pricing-price').innerText = '$99 / month';
-    document.querySelectorAll('.pricing-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelector('.pricing-btn:nth-child(1)').classList.add('active');
-}
-
-function showPremium() {
-    document.getElementById('pricing-name').innerText = 'Premium Plan';
-    document.getElementById('pricing-price').innerText = '$199 / month';
-    document.querySelectorAll('.pricing-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelector('.pricing-btn:nth-child(2)').classList.add('active');
-}
-*/
-
-
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const serviceSelect = document.getElementById('serviceSelect');
