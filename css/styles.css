@@ -1551,3 +1551,49 @@ footer p a {
     margin: auto;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.info-input-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: auto;
+    padding: 16px;
+    background: #f8f9fa; /* Light background */
+    border-radius: 12px;
+}
+
+.info-input-container label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.info-input-container input {
+    width: inherit;
+    padding: 10px 14px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.info-input-container input:focus {
+    border-color: #0056b3; /* Highlight with theme color */
+}

@@ -121,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
             paypalButtonsRendered = false;  // Ensure flag is reset for re-render
         }
     }
-             
 
 
     // Remove API from cart
@@ -145,9 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
             let gst = subtotal * 0.18;
             let totalWithGST = subtotal + gst;
-        
+            
+            const name = document.getElementById("userName").value;
+            const email = document.getElementById("userEmail").value;
+
+            sendToPodio(name, email, selectedServices, subtotal, totalWithGST);
 
             paypal.Buttons({
+
                 createOrder: function(data, actions) {
                     return actions.order.create({
                         purchase_units: [{
@@ -161,16 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        // Calculate GST (18%)
-                        let basePrice = 199;
-                        let subtotal = basePrice; // Starting with the base price
-                    
-                        selectedServices.forEach(item => {
-                            subtotal += parseFloat(item.charge.replace('$', ''));
-                        });
-                    
-                        let gst = subtotal * 0.18;
-                        let totalWithGST = subtotal + gst;
                     
                         // Store payment details in local storage
                         localStorage.setItem('basePrice', basePrice); // Base price only (199)
@@ -220,11 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-
 // FAQs
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -246,17 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Slideshow of services in index.html
@@ -327,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
           updateSlides(slideIndex);
           slideshowContent.style.cursor = 'grab';
         });
-  
+
         slideshowContent.addEventListener('mousemove', (event) => {
           if (isDragging) {
             const currentPosition = event.pageX;
@@ -345,4 +323,21 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .catch(error => console.error('Error fetching services:', error));
   });
-  
+
+
+
+
+  function sendToPodio(name, email, selectedServices, subtotal, totalWithGST) {
+    const podioWebhookURL = "https://workflow-automation.podio.com/catch/261yk1922g07gn0";
+
+    // Convert selected services to a JSON string and encode it for URL
+    const servicesEncoded = encodeURIComponent(JSON.stringify(selectedServices));
+
+    // Construct the full GET request URL
+    const requestURL = `${podioWebhookURL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&services=${servicesEncoded}&subtotal=${subtotal.toFixed(2)}&totalWithGST=${totalWithGST.toFixed(2)}`;
+
+    // Make the GET request (no-cors mode)
+    fetch(requestURL, { method: "GET", mode: "no-cors" })
+        .then(() => console.log("Data sent to Podio successfully."))
+        .catch(error => console.error("Error sending data to Podio:", error));
+}
